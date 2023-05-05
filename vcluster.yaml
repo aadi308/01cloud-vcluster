@@ -1,0 +1,86 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: VCluster
+metadata:
+  name: {name}
+  namespace: {namespace}
+spec:
+  controlPlaneEndpoint:
+    host: ""
+    port: 0
+  helmRelease:
+    # chart:
+    #   name: vcluster-k8s
+    #   repo: null
+    #   version: null
+    values: |
+      {values}
+  kubernetesVersion: 1.27.0
+# ---
+# apiVersion: v1
+# kind: ResourceQuota
+# metadata:
+#   name: newcluster-quota
+#   namespace: ha-vcluster
+# spec:
+#   hard:
+#     pods: "10"
+#     services: "10"
+#     configmaps: "10"
+#     persistentvolumeclaims: "10"
+#     replicationcontrollers: "20"
+#     secrets: "10"
+#     services.loadbalancers: "5"
+#     services.nodeports : "5"
+
+
+
+# enableHA: true
+      # syncer:
+      #   replicas: 2
+      # vcluster:
+      #   env:
+      #     - name: K3S_DATASTORE_ENDPOINT
+      #       value: mysql://root:6hBU23nvH2@tcp(mysql-mariadb.database.svc.cluster.local:3306)/{name}
+      # storage:
+      #   persistence: false
+      # coredns:
+      #   replicas: 2
+      # service:
+      #   type: NodePort
+
+
+#\n      enableHA: true\n      syncer:\n        replicas: 2\n      vcluster:\n        env:\n          - name: K3S_DATASTORE_ENDPOINT\n            value: mysql://root:6hBU23nvH2@tcp(mysql-mariadb.database.svc.cluster.local:3306)/{name}\n      storage:\n        persistence: false\n      coredns:\n        replicas: 2\n      service:\n        type: NodePort\n
+
+# 
+# \n      enableHA: true
+# \n      syncer:
+# \n        replicas: 2
+# \n      etcd:
+# \n        replicas: 3
+# \n
+
+# enableHA: true
+
+# # Scale up syncer replicas
+# syncer:
+#   replicas: 3
+
+# # Scale up etcd
+# etcd:
+#   replicas: 3
+
+# # Scale up controller manager
+# controller:
+#   replicas: 3
+
+# # Scale up api server
+# api:
+#   replicas: 3
+
+# # Scale up DNS server
+# coredns:
+#   replicas: 3
+
+
+
+  
